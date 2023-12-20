@@ -21,12 +21,12 @@ export const Profile = () => {
   return userStatus ? (
     <div className="md:flex text-white">
       {/* {console.log(username)} */}
-      {console.log(userData.$createdAt.slice(20, 23))}
+      {console.log(userData.$createdAt.slice(21, 22))}
 
       <img
         src={`https://picsum.photos/id/${userData.$createdAt.slice(
-          20,
-          22
+          21,
+          23
         )}/2000/2000`}
         alt=""
         className="rounded-full ring-2 ring-white m-4 h-36  md:h-96"

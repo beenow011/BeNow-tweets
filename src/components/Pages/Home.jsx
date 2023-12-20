@@ -27,12 +27,17 @@ export const Home = () => {
       </div>
     </div>
   ) : (
-    <>
+    <div className="h-[100vw] md:flex justify-center gap-6 ">
       <Link to="/login">
-        <h1 className="text-white text-3xl font-mono font-bold underline m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-5">
-          Login to show your profile
+        <h1 className="text-white text-2xl font-mono font-bold underline m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-3">
+          Login
         </h1>
       </Link>
-    </>
+      <Link to="/signup">
+        <h1 className="text-white text-2xl font-mono font-bold underline m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-3">
+          Signup
+        </h1>
+      </Link>
+    </div>
   );
 };
