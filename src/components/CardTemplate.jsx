@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import like from "../assets/like3.png";
 import liked from "../assets/liked.png";
 import { Link } from "react-router-dom";
-
+import service from "../appwite/config";
 import {
   Card,
   CardBody,
@@ -16,6 +16,7 @@ export const CardTemplate = ({ userId, tweet, likeCountPrev = 0, img }) => {
   const [users, setUsers] = useState({});
   const [likeCount, setLikeCount] = useState(likeCountPrev);
   const [isLike, setIsLike] = useState(false);
+
   const handelLike = (e) => {
     if (!isLike) {
       e.target.src = liked;
@@ -44,7 +45,7 @@ export const CardTemplate = ({ userId, tweet, likeCountPrev = 0, img }) => {
           <Link to={`userprofile/${userId}`}>
             <Typography variant="h5" color="blue-gray" className="mb-2 flex">
               <img
-                src={img}
+                src={service.getFiles(img)}
                 className="rounded-full mr-2 ring-2 ring-black"
                 width={30}
                 height={30}

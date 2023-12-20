@@ -27,6 +27,15 @@ export class AuthService{
         }
     }
 
+    async updateUser(fileId){
+        try{
+            return await this.account.updatePrefs(fileId);
+        }catch(error){
+            console.log("Appwrite serive :: updateUser :: error", error);
+
+        }
+    }
+
     async login({email, password}) {
         try {
             return await this.account.createEmailSession(email, password);

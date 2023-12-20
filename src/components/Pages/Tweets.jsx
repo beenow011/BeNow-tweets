@@ -10,20 +10,15 @@ export const Tweets = () => {
   const userStatus = useSelector((state) => state.auth.status);
 
   const userData = useSelector((state) => state.auth.userData);
-  const { register, handleSubmit, setValue } = useForm({
+
+  const { register, handleSubmit, setValue, getValues } = useForm({
     defaultValues: {
       msg: "",
       id: userStatus ? userData.$id : null,
       userid: userStatus
         ? `@${userData.name.toLowerCase().replace(/\s/g, "")}`
         : "",
-
-      profilpic: userStatus
-        ? `https://picsum.photos/id/${userData.$createdAt.slice(
-            21,
-            23
-          )}/2000/2000`
-        : "",
+      profilpic: userStatus ? userData.prefs.fileId : null,
     },
   });
   const [Tweet, setTweet] = useState("");
@@ -31,25 +26,17 @@ export const Tweets = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const inputValue = e.target.value;
-    // console.log("Input Value:", inputValue);
+    console.log("Input Value:", userData.prefs.fileId);
 
     setTweet(inputValue);
-    // console.log("Tweet:", Tweet);
-
     setValue("msg", inputValue);
-
-    // console.log('Updated "msg":', getValue("msg"));
   };
   const Submit = async (data) => {
-    console.log(data);
-    if (data.msg.length > 0) {
-      // e.preventDefault();
-      // setValue("msg", Tweet);
+    console.log("Input Value:", userData.prefs.fileId);
 
-      console.log(data.msg);
-      // dispatch(addTweet(Tweet));
+    if (data.msg.length > 0) {
+      console.log(data);
       const dbPost = await service.createPost({ ...data });
-      console.log(dbPost);
       setTweet("");
     } else {
       alert("tweet must be min of 1 char.");

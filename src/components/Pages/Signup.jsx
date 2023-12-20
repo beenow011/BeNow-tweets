@@ -14,21 +14,40 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
 import authService from "../../appwite/auth";
+import service from "../../appwite/config";
 
 export default function LoginCard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
+  const [File, setFile] = useState("");
+  const uploadFile = async (file) => {
+    setError("");
+    try {
+      // console.log(file[0]);
+
+      const newfile = await service.uploadFile(file[0]);
+      return newfile;
+    } catch (error) {
+      setError(error.message);
+    }
+  };
   const create = async (data) => {
     setError("");
     try {
       const userData = await authService.createAccount(data);
       if (userData) {
-        await authService.getCurrentUser();
+        // const newfile = await authService.getCurrentUser();
+
         const userData = await authService.getCurrentUser();
         if (userData) {
-          dispatch(login(userData));
+          const newFile = await uploadFile(data.image);
+          const fileId = newFile.$id;
+          console.log(fileId);
+          const updatedPref = await authService.updateUser({ fileId });
+          console.log(updatedPref);
+          dispatch(login(updatedPref));
           navigate("/");
         }
       }
@@ -76,6 +95,15 @@ export default function LoginCard() {
           size="lg"
           className="text-black"
           {...register("password", {
+            required: true,
+          })}
+        />
+        <Input
+          label="Profil pic"
+          type="file"
+          size="lg"
+          className="text-black"
+          {...register("image", {
             required: true,
           })}
         />

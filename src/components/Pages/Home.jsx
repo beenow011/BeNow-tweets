@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import service from "../../appwite/config";
 export const Home = () => {
   const userStatus = useSelector((state) => state.auth.status);
-
+  const userData = useSelector((state) => state.auth.userData);
   const tweetSelector = useSelector((state) => state.tweets.allTweets);
   const [tweets, setTweets] = useState(tweetSelector);
   useEffect(() => {
@@ -26,7 +26,7 @@ export const Home = () => {
             key={i}
             userId={tweetInfo.userid}
             tweet={tweetInfo.msg}
-            img={tweetInfo.profilepic}
+            img={tweetInfo.profilpic}
           />
         ))}
       </div>
