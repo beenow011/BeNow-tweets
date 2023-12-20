@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { CardTemplate } from "../CardTemplate";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import service from "../../appwite/config";
 export const Home = () => {
   const userStatus = useSelector((state) => state.auth.status);
 
   const tweetSelector = useSelector((state) => state.tweets.allTweets);
   const [tweets, setTweets] = useState(tweetSelector);
+  useEffect(() => {
+    service.getPosts().then((posts) => {
+      posts ? setTweets(posts.documents) : null;
+    });
+  }, []);
 
   return userStatus ? (
     <div>
@@ -18,10 +24,9 @@ export const Home = () => {
         {tweets.map((tweetInfo, i) => (
           <CardTemplate
             key={i}
-            userId={tweetInfo.userId}
-            tweet={tweetInfo.tweet}
-            likeCountPrev={tweetInfo.likeCountPrev}
-            img={tweetInfo.img}
+            userId={tweetInfo.userid}
+            tweet={tweetInfo.msg}
+            img={tweetInfo.profilepic}
           />
         ))}
       </div>

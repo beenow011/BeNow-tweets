@@ -12,18 +12,18 @@ export const Tweets = () => {
   const userData = useSelector((state) => state.auth.userData);
   const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
+      msg: "",
+      id: userStatus ? userData.$id : null,
       userid: userStatus
         ? `@${userData.name.toLowerCase().replace(/\s/g, "")}`
         : "",
-      msg: "",
 
-      profil_pic: userStatus
+      profilpic: userStatus
         ? `https://picsum.photos/id/${userData.$createdAt.slice(
             21,
             23
           )}/2000/2000`
         : "",
-      id: userStatus ? userData.$id : null,
     },
   });
   const [Tweet, setTweet] = useState("");
@@ -47,7 +47,7 @@ export const Tweets = () => {
       // setValue("msg", Tweet);
 
       console.log(data.msg);
-      dispatch(addTweet(Tweet));
+      // dispatch(addTweet(Tweet));
       const dbPost = await service.createPost({ ...data });
       console.log(dbPost);
       setTweet("");

@@ -13,20 +13,27 @@ export class Service{
         
     }
 
-    async  createPost({userid,msg,profile_pic,id}) {
+    async  createPost({msg,id,userid,profilepic}) {
         try{
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 ID.unique(),{
-                    userid,
-                    msg,
-                    profile_pic,
-                    id
+                    msg,id,userid,profilepic
                 })
         }catch(error){
             console.log("appwrite error::create post::", error)
         }
+    }
+
+    async getPosts(){
+        try{
+            return await this.databases.listDocuments(conf.appwriteDatabaseId,conf.appwriteCollectionId)
+        }catch(error){
+            console.log("appwrite error::get posts::", error)
+            return false
+        }
+
     }
 
 }
