@@ -57,13 +57,15 @@ export class Service{
     }
 
    getFiles(fileId){
-        
+        try{
             const preview = this.storage.getFilePreview(
                 conf.appwriteBucketId,
                 fileId
             ) 
             return preview
-        
+        }catch(error){
+            console.log("Appwrite serive :: getFiles :: error", error)
+        }
            
     }
 
