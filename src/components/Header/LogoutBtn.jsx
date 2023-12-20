@@ -15,11 +15,7 @@ const LogoutBtn = () => {
     <div>
       <NavLink
         to="/"
-        className={({ isActive }) =>
-          ` ${
-            isActive ? "text-[#ec5990]" : "text-white"
-          }  hover:text-[#ec598f8c]`
-        }
+        className={`text-white  hover:text-[#ec598f8c]`}
         onClick={logoutHandler}
       >
         <div>

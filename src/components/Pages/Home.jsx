@@ -32,17 +32,20 @@ export const Home = () => {
       </div>
     </div>
   ) : (
-    <div className="h-[100vw] md:flex justify-center gap-6 ">
-      <Link to="/login">
-        <h1 className="text-white text-2xl font-mono font-bold underline m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-3">
-          Login
-        </h1>
-      </Link>
-      <Link to="/signup">
-        <h1 className="text-white text-2xl font-mono font-bold underline m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-3">
-          Signup
-        </h1>
-      </Link>
-    </div>
+    <>
+      <p className="text-white mt-10 text-2xl ">login or signup</p>
+      <div className="h-[100vw] w-80 flex justify-center gap-6 mx-auto ">
+        <Link to="/login">
+          <h1 className="text-white text-2xl font-mono font-bold  m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-3">
+            Login
+          </h1>
+        </Link>
+        <Link to="/signup">
+          <h1 className="text-white text-2xl font-mono font-bold  m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-3">
+            Signup
+          </h1>
+        </Link>
+      </div>
+    </>
   );
 };

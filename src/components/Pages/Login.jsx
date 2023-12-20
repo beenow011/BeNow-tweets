@@ -37,7 +37,7 @@ export default function LoginCard() {
     }
   };
   return (
-    <Card className="w-96 mx-auto my-32 bg-[#ec5990]">
+    <Card className="w-80 md:w-96 mx-auto my-32 bg-[#ec5990]">
       <CardHeader
         variant="gradient"
         color="gray"

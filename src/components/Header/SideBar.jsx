@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import LogoutBtn from "./LogoutBtn";
 
-export const Header = () => {
+export const SideBar = () => {
   // const userData = useSelector((state) => state.auth.userData);
   const authStatus = useSelector((state) => state.auth.status);
   const navItems = [
@@ -40,9 +40,10 @@ export const Header = () => {
     },
   ];
   return (
-    <header className=" sticky z-50 top-0 shadow-lg shadow-gray-900/80 hidden md:block">
-      <nav className=" bg-black lg:px-10 py-2.5 text-white flex   justify-evenly rounded-md sm:flex-col md:flex-row">
-        <div className="flex-none my-auto ml-2 md:pl-4">
+    <>
+      <div className="  w-16 p-5 flex justify-between gap-8 md:hidden ">
+        {" "}
+        <div className="flex-none my-auto ml-2 md:pl-4 ">
           <Link to="/">
             <h1 className="flex sm:text-lg  md:text-3xl   ">
               <p className="bg-[#ec5990] rounded-md text-black px-1 ">Be</p>
@@ -53,9 +54,8 @@ export const Header = () => {
             </h1>
           </Link>
         </div>
-
-        <div className="grow flex justify-center items-center text-sm md:text-lg">
-          <ul className="flex gap-6 md:gap-10">
+        <div className="grow flex justify-center items-center text-sm md:text-lg ">
+          <ul className="flex gap-7 md:gap-10">
             {console.log(authStatus)}
             {navItems.map((item) =>
               item.active ? (
@@ -85,15 +85,7 @@ export const Header = () => {
             )}
           </ul>
         </div>
-        <div className="flex-none flex items-center">
-          <a
-            href="https://github.com/beenow011/BeeNow-Tweets---React"
-            className="md:bg-white hover:bg-gray-500 rounded-md md:text-black  sm:text-sm  p-2 mx-2"
-          >
-            Github
-          </a>
-        </div>
-      </nav>
-    </header>
+      </div>
+    </>
   );
 };

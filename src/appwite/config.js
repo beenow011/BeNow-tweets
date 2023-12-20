@@ -58,9 +58,10 @@ export class Service{
 
    getFiles(fileId){
         try{
+            const file = fileId
             const preview = this.storage.getFilePreview(
                 conf.appwriteBucketId,
-                fileId
+                file
             ) 
             return preview
         }catch(error){
