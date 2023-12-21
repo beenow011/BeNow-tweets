@@ -42,6 +42,18 @@ export class Service{
 
     }
 
+    async updateLike(post,{likeCount}){
+        try{
+            const updatedData = {
+                likecount: likeCount 
+              };
+            //   console.log(updatedData)
+            return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,post,updatedData)
+        }catch(error){
+            console.log("appwrite error::update like::", error)
+        }
+    }
+
     async uploadFile(file){
         try {
             return await this.storage.createFile(

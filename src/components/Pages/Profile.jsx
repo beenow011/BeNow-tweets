@@ -13,7 +13,7 @@ export const Profile = () => {
   const userData = useSelector((state) => state.auth.userData);
   // const username = userData.name;
   // console.log(userData.prefs);
-
+  // const [tweets,setTweets]=useState([])
   const [bio, setBio] = useState(userData.prefs.bio);
   const [edit, setEdit] = useState(false);
   const tweetSelector = useSelector((state) => state.tweets.allTweets);
@@ -29,17 +29,22 @@ export const Profile = () => {
   useEffect(() => {
     authService.getCurrentUser().then((currentUser) => {
       dispatch(login(currentUser));
+      // userData = currentUser;
     });
   }, [bio, fileId]);
+  // useEffect(() => {
+  //   service.getPosts().then((posts) => {
+  //     posts ? setTweets(posts.documents) : null;
+  //   });
+  // }, []);
   useEffect(() => {
     setTweets(tweetSelector.filter((tweet) => tweet.userId === userData.name));
-    localStorage.setItem("tweets", JSON.stringify(tweets));
+
     // console.log(tweets);
   }, [tweetSelector]);
   return userStatus ? (
     <div className="md:flex text-white ">
       {/* {console.log(username)} */}
-      {console.log(userData.$createdAt.slice(21, 22))}
 
       <img
         src={service.getFiles(userData.prefs.fileId)}
@@ -63,7 +68,7 @@ export const Profile = () => {
                 type="text"
                 value={bio}
                 placeholder="write your bio"
-                maxLength={60}
+                maxLength={200}
                 onChange={(e) => setBio(e.target.value)}
               />
             ) : (

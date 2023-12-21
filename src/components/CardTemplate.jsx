@@ -12,12 +12,21 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { UserProfile } from "./UserProfile";
-export const CardTemplate = ({ userId, tweet, likeCountPrev = 0, img }) => {
+export const CardTemplate = ({
+  key,
+  id,
+  userId,
+  tweet,
+  likeCountPrev,
+  img,
+}) => {
   const [users, setUsers] = useState({});
   const [likeCount, setLikeCount] = useState(likeCountPrev);
   const [isLike, setIsLike] = useState(false);
-
-  const handelLike = (e) => {
+  useEffect(() => {
+    service.updateLike(id, { likeCount });
+  }, [likeCount]);
+  const handelLike = async (e) => {
     if (!isLike) {
       e.target.src = liked;
       setLikeCount((prev) => prev + 1);
