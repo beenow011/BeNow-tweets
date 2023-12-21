@@ -87,7 +87,7 @@ export const Header = () => {
         </div>
         <div className="flex-none flex items-center">
           <a
-            href="https://github.com/beenow011/BeeNow-Tweets---React"
+            href="https://github.com/beenow011/BeNow-tweets"
             className="md:bg-white hover:bg-gray-500 rounded-md md:text-black  sm:text-sm  p-2 mx-2"
           >
             Github

@@ -56,7 +56,7 @@ export const CardTemplate = ({
     <div>
       <Card className="mt-6 z-0 relative  w-65 md:w-64 lg:w-80 m-5 ring-2 shadow-black ring-gray-800 min-h-fit bg-[#1c1c21] text-white">
         <CardBody>
-          <Link to={`userprofile/${userId}`}>
+          <Link to={`userprofile/${id}`}>
             <Typography variant="h5" color="blue-gray" className="mb-2 flex">
               <img
                 src={service.getFiles(img)}

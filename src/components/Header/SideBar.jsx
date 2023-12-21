@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import LogoutBtn from "./LogoutBtn";
-
+import github from "../../assets/github.png";
 export const SideBar = () => {
   // const userData = useSelector((state) => state.auth.userData);
   const authStatus = useSelector((state) => state.auth.status);
@@ -97,6 +97,27 @@ export const SideBar = () => {
                     <LogoutBtn />
                   </li>
                 )}
+                <li
+                  className="mt-3 hover:bg-[#ec5990] rounded-md p-1"
+                  onClick={() => setMenu((val) => !val)}
+                >
+                  <a
+                    href="https://github.com/beenow011/BeNow-tweets"
+                    className={({ isActive }) =>
+                      ` ${
+                        isActive ? "bg-[#ec5990]" : "text-white"
+                      }  hover:bg-[#ec598f8c]`
+                    }
+                  >
+                    <img
+                      src={github}
+                      alt=""
+                      width={30}
+                      className="m-auto mb-2"
+                    />
+                    <p className="text-sm text-white ">Github</p>
+                  </a>
+                </li>
               </ul>
             </div>
           ) : null}
