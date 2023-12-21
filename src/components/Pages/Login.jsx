@@ -25,6 +25,7 @@ export default function LoginCard() {
     try {
       const session = await authService.login(data);
       if (session) {
+        localStorage.setItem("appwriteToken", session.$id);
         const userData = await authService.getCurrentUser();
         if (userData) {
           dispatch(authLogin(userData));

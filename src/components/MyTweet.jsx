@@ -3,7 +3,9 @@ import like from "../assets/like3.png";
 import liked from "../assets/liked.png";
 import option from "../assets/option.png";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import service from "../appwite/config";
 import {
   Card,
   CardBody,
@@ -14,11 +16,12 @@ import {
 import { useState } from "react";
 import { dltTweet } from "../store/tweetslice";
 export const MyTweet = ({ userId, tweet, likeCountPrev, img, id }) => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState({});
   const [likeCount, setLikeCount] = useState(likeCountPrev);
   const [isLike, setIsLike] = useState(false);
   const dispatch = useDispatch();
-
+  const userData = useSelector((state) => state.auth.userData);
   const handelLike = (e) => {
     if (!isLike) {
       e.target.src = liked;
@@ -42,7 +45,9 @@ export const MyTweet = ({ userId, tweet, likeCountPrev, img, id }) => {
 
   const handleChange = (e) => {
     if (e.target.value === "dlt") {
+      service.deletePost(id);
       dispatch(dltTweet(id));
+      navigate("/");
     }
   };
   return (
@@ -51,7 +56,7 @@ export const MyTweet = ({ userId, tweet, likeCountPrev, img, id }) => {
         <CardBody>
           <Typography variant="h5" color="blue-gray" className="mb-2 flex">
             <img
-              src={img}
+              src={service.getFiles(userData.prefs.fileId)}
               className="rounded-full mr-2 ring-2 ring-black"
               width={30}
               height={30}

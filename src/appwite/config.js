@@ -42,13 +42,33 @@ export class Service{
 
     }
 
+    async deletePost(id){
+        try {
+            await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                id
+            )
+            return true
+        } catch (error) {
+            console.log("Appwrite serive :: deletePost :: error", error);
+            return false
+        }
+    }
+
     async updateLike(post,{likeCount}){
         try{
+
+            // if (!post && !likeCount) {
+            //     throw new Error("Invalid post or post ID");
+            //   }
+          
+              const documentId = post;
             const updatedData = {
                 likecount: likeCount 
               };
             //   console.log(updatedData)
-            return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,post,updatedData)
+            return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,documentId,updatedData)
         }catch(error){
             console.log("appwrite error::update like::", error)
         }

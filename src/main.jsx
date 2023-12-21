@@ -8,6 +8,7 @@ import { Tweets } from "./components/Pages/Tweets.jsx";
 import { Profile } from "./components/Pages/Profile.jsx";
 import { UserProfile } from "./components/UserProfile.jsx";
 import Signup from "./components/Pages/Signup.jsx";
+import AuthLayout from "./components/AuthLayout.jsx";
 import Login from "./components/Pages/Login.jsx";
 const router = createBrowserRouter([
   {
@@ -15,16 +16,24 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />,
       },
       {
-        path: "tweets",
-        element: <Tweets />,
+        path: "/tweets",
+        element: (
+          <AuthLayout authentication>
+            <Tweets />
+          </AuthLayout>
+        ),
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <AuthLayout authentication>
+            <Profile />
+          </AuthLayout>
+        ),
       },
 
       {
@@ -33,11 +42,19 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <Signup />,
+        element: (
+          <AuthLayout authentication={false}>
+            <Signup />
+          </AuthLayout>
+        ),
       },
       {
         path: "login",
-        element: <Login />,
+        element: (
+          <AuthLayout authentication={false}>
+            <Login />
+          </AuthLayout>
+        ),
       },
     ],
   },

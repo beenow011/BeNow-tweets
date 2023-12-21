@@ -61,7 +61,7 @@ export const SideBar = () => {
             onClick={() => setMenu((val) => !val)}
           >
             {" "}
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
               {menu ? "remove" : "add"}
             </span>
             <p className="text-sm"> {menu ? "remove" : "menu"}</p>

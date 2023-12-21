@@ -43,6 +43,8 @@ export default function LoginCard() {
 
         const userData = await authService.getCurrentUser();
         if (userData) {
+          localStorage.setItem("appwriteToken", userData.$id);
+
           const newFile = await uploadFile(data.image);
           const fileId = newFile.$id;
           console.log(fileId);

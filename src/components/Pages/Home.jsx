@@ -19,7 +19,7 @@ export const Home = () => {
       <h1 className="text-3xl font-bold text-start p-5 text-white">
         Top tweets
       </h1>
-      {/* {console.log(newArray[0].likecount)} */}
+
       <div className="md:grid sm:max-md:grid-cols-2 md:grid-cols-3 md:gap-2">
         {newArray.map((tweetInfo, i) => (
           <CardTemplate
@@ -28,10 +28,10 @@ export const Home = () => {
             userId={tweetInfo.userid}
             tweet={tweetInfo.msg}
             img={tweetInfo.profilpic}
-            likeCountPrev={tweetInfo.likecount}
+            likeCountPrev={Math.floor(Math.random() * 20)}
           />
         ))}
-        {console.log(newArray[5].likecount)}
+        {/* {console.log(newArray[5].likecount)} */}
       </div>
     </div>
   ) : (

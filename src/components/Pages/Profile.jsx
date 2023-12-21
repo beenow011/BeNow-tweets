@@ -14,10 +14,11 @@ export const Profile = () => {
   // const username = userData.name;
   // console.log(userData.prefs);
   // const [tweets,setTweets]=useState([])
+  const [user, setUser] = useState(userData);
   const [bio, setBio] = useState(userData.prefs.bio);
   const [edit, setEdit] = useState(false);
   const tweetSelector = useSelector((state) => state.tweets.allTweets);
-  const [tweets, setTweets] = useState(tweetSelector);
+  const [tweets, setTweets] = useState([]);
   const fileId = userData.prefs.fileId;
   // let myTweets = [];
   const handleSubmit = async () => {
@@ -29,19 +30,29 @@ export const Profile = () => {
   useEffect(() => {
     authService.getCurrentUser().then((currentUser) => {
       dispatch(login(currentUser));
-      // userData = currentUser;
+      setUser(currentUser);
     });
   }, [bio, fileId]);
-  // useEffect(() => {
-  //   service.getPosts().then((posts) => {
-  //     posts ? setTweets(posts.documents) : null;
-  //   });
-  // }, []);
-  useEffect(() => {
-    setTweets(tweetSelector.filter((tweet) => tweet.userId === userData.name));
 
-    // console.log(tweets);
-  }, [tweetSelector]);
+  useEffect(() => {
+    service.getPosts().then((posts) => {
+      if (posts) {
+        const newTweets = posts.documents.filter(
+          (tweet) => tweet.id === userData.$id
+        );
+        setTweets(newTweets);
+      }
+    });
+  }, []);
+  // console.log(userData);
+  // console.log(tweets);
+  const newArray = tweets.slice().reverse();
+
+  // useEffect(() => {
+  //   setTweets(tweets.filter((tweet) => tweet.userId === userData.name));
+
+  //   // console.log(tweets);
+  // }, [tweets]);
   return userStatus ? (
     <div className="md:flex text-white ">
       {/* {console.log(username)} */}
@@ -97,14 +108,14 @@ export const Profile = () => {
         </ul>
         <h1 className="text-start text-3xl font-bold ">Your tweets</h1>
         <div className="lg:grid lg:grid-cols-2 ">
-          {tweets.length > 0 ? (
-            tweets.map((tweetInfo, i) => (
+          {newArray.length > 0 ? (
+            newArray.map((tweetInfo, i) => (
               <MyTweet
-                id={tweetInfo.id}
+                id={tweetInfo.$id}
                 key={i}
-                userId={tweetInfo.userId}
-                tweet={tweetInfo.tweet}
-                likeCountPrev={tweetInfo.likeCountPrev}
+                userId={tweetInfo.userid}
+                tweet={tweetInfo.msg}
+                likeCountPrev={Math.floor(Math.random() * 20)}
                 img={tweetInfo.img}
               />
             ))
