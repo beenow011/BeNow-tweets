@@ -4,34 +4,49 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import authService from "../../appwite/auth";
-
+import { login } from "../../store/authSlice";
 import dp from "../../assets/dp.jpg";
+import service from "../../appwite/config";
 export const Profile = () => {
+  const dispatch = useDispatch();
   const userStatus = useSelector((state) => state.auth.status);
   const userData = useSelector((state) => state.auth.userData);
   // const username = userData.name;
+  // console.log(userData.prefs);
+
+  const [bio, setBio] = useState(userData.prefs.bio);
+  const [edit, setEdit] = useState(false);
   const tweetSelector = useSelector((state) => state.tweets.allTweets);
   const [tweets, setTweets] = useState(tweetSelector);
+  const fileId = userData.prefs.fileId;
   // let myTweets = [];
+  const handleSubmit = async () => {
+    setEdit((state) => !state);
+    const updatedPref = await authService.updateUser({ fileId, bio });
+
+    // console.log(updatedPref);
+  };
+  useEffect(() => {
+    authService.getCurrentUser().then((currentUser) => {
+      dispatch(login(currentUser));
+    });
+  }, [bio, fileId]);
   useEffect(() => {
     setTweets(tweetSelector.filter((tweet) => tweet.userId === userData.name));
     localStorage.setItem("tweets", JSON.stringify(tweets));
     // console.log(tweets);
   }, [tweetSelector]);
   return userStatus ? (
-    <div className="md:flex text-white">
+    <div className="md:flex text-white ">
       {/* {console.log(username)} */}
       {console.log(userData.$createdAt.slice(21, 22))}
 
       <img
-        src={`https://picsum.photos/id/${userData.$createdAt.slice(
-          21,
-          23
-        )}/2000/2000`}
+        src={service.getFiles(userData.prefs.fileId)}
         alt=""
         className="rounded-full ring-2 ring-white m-4 h-36  md:h-96"
       />
-      <div className="p-4 flex flex-col m-auto ">
+      <div className="p-4 flex flex-col m-auto w-full">
         <ul className="flex flex-col items-start">
           <li className="mb-4">
             <h1 className="text-3xl font-sans font-bold">
@@ -41,14 +56,38 @@ export const Profile = () => {
           <li className="mb-4">
             <p className="text-gray-700 text-2xl">{userData.name}</p>
           </li>
-          <li className="mb-4">
-            <p className="text-start">
-              Hello, I'm Abhinav NB, a Computer Science student currently
-              pursuing my Bachelor of Engineering (BE) degree at NIE Mysore. I
-              hail from Chikmagalur, where I completed my schooling. My passion
-              lies in the world of photography and video editing, where I
-              explore my creativity and storytelling skills.
-            </p>
+          <li className="mb-4 flex gap-3">
+            {edit ? (
+              <textarea
+                className="text-start w-full bg-gray-800"
+                type="text"
+                value={bio}
+                placeholder="write your bio"
+                maxLength={60}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            ) : (
+              <p className="text-start">{bio}</p>
+            )}
+
+            {!edit ? (
+              <div
+                onClick={() => setEdit((state) => !state)}
+                className="cursor-pointer "
+              >
+                {" "}
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+            ) : (
+              <div>
+                <button
+                  className="bg-white text-black p-1 rounded-md"
+                  onClick={handleSubmit}
+                >
+                  Save
+                </button>
+              </div>
+            )}
           </li>
         </ul>
         <h1 className="text-start text-3xl font-bold ">Your tweets</h1>

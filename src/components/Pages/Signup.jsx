@@ -33,6 +33,7 @@ export default function LoginCard() {
       setError(error.message);
     }
   };
+  const bio = "write your bio";
   const create = async (data) => {
     setError("");
     try {
@@ -45,7 +46,7 @@ export default function LoginCard() {
           const newFile = await uploadFile(data.image);
           const fileId = newFile.$id;
           console.log(fileId);
-          const updatedPref = await authService.updateUser({ fileId });
+          const updatedPref = await authService.updateUser({ fileId, bio });
           console.log(updatedPref);
           dispatch(login(updatedPref));
           navigate("/");

@@ -27,9 +27,9 @@ export class AuthService{
         }
     }
 
-    async updateUser(fileId){
+    async updateUser({fileId,bio}){
         try{
-            return await this.account.updatePrefs(fileId);
+            return await this.account.updatePrefs({fileId,bio});
         }catch(error){
             console.log("Appwrite serive :: updateUser :: error", error);
 

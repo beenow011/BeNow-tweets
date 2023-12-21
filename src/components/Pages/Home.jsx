@@ -13,7 +13,7 @@ export const Home = () => {
       posts ? setTweets(posts.documents) : null;
     });
   }, []);
-
+  const newArray = tweets.slice().reverse();
   return userStatus ? (
     <div className="z-2 relative">
       <h1 className="text-3xl font-bold text-start p-5 text-white">
@@ -21,7 +21,7 @@ export const Home = () => {
       </h1>
 
       <div className="md:grid sm:max-md:grid-cols-2 md:grid-cols-3 md:gap-2">
-        {tweets.map((tweetInfo, i) => (
+        {newArray.map((tweetInfo, i) => (
           <CardTemplate
             key={i}
             userId={tweetInfo.userid}
