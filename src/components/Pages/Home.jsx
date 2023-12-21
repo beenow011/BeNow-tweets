@@ -15,7 +15,7 @@ export const Home = () => {
   }, []);
 
   return userStatus ? (
-    <div>
+    <div className="z-2 relative">
       <h1 className="text-3xl font-bold text-start p-5 text-white">
         Top tweets
       </h1>
