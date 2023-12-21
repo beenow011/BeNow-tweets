@@ -20,12 +20,15 @@ export const CardTemplate = ({
   likeCountPrev,
   img,
 }) => {
+  // console.log(id);
   const [users, setUsers] = useState({});
   const [likeCount, setLikeCount] = useState(likeCountPrev);
   const [isLike, setIsLike] = useState(false);
+
   useEffect(() => {
     service.updateLike(id, { likeCount });
   }, [likeCount]);
+
   const handelLike = async (e) => {
     if (!isLike) {
       e.target.src = liked;
