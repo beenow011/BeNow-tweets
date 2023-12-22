@@ -11,9 +11,9 @@ export const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [tweetUser, setTweetUser] = useState(null);
 
-  useEffect(() => {
-    authService.findUser(id).then((user) => user && setTweetUser(user));
-  }, []);
+  // useEffect(() => {
+  //   authService.findUser(id).then((user) => user && setTweetUser(user));
+  // }, []);
   const tweetSelector = useSelector((state) => state.tweets.allTweets);
 
   const img = "https://picsum.photos/id/123/40/40";
@@ -23,7 +23,7 @@ export const UserProfile = () => {
       <div className="md:flex text-white ">
         {/* {console.log(user)} */}
         <img
-          src={service.getFiles(tweetUser.prefs.fileId)}
+          src={""}
           alt=""
           className="rounded-full ring-2 ring-white m-4 h-36  md:h-96"
           height={500}
@@ -33,7 +33,7 @@ export const UserProfile = () => {
           <ul className="flex flex-col items-start">
             <li className="mb-4">
               <h1 className="text-3xl font-sans font-bold">
-                {tweetUser && tweetUser.userid}
+                {/* {tweetUser && tweetUser.userid} */}
               </h1>
             </li>
             <li className="mb-4">

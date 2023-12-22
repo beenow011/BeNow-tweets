@@ -14,9 +14,7 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'rubik': ['Rubik-Scribble', 'sans-serif']
-      },
+      
     },
   },
   plugins: [],

@@ -59,6 +59,7 @@ export class AuthService{
 
     async findUser(userid){
         try{
+            console.log(userid)
             return await this.users.get(userid);
         }catch(error){
             console.log("Appwrite serive :: findUser :: error", error);
