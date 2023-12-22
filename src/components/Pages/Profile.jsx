@@ -60,7 +60,9 @@ export const Profile = () => {
       <img
         src={service.getFiles(userData.prefs.fileId)}
         alt=""
-        className="rounded-full ring-2 ring-white m-4 h-36  md:h-96"
+        width={380}
+        height={390}
+        className="rounded-md ring-2 ring-white m-4 w-36 h-36  md:h-96 md:w-96"
       />
       <div className="p-4 flex flex-col m-auto w-full">
         <ul className="flex flex-col items-start">

@@ -74,7 +74,7 @@ export const CardTemplate = ({
             <Typography variant="h5" color="blue-gray" className="mb-2 flex">
               <img
                 src={img && service.getFiles(img)}
-                className="rounded-full mr-2 ring-2 ring-black"
+                className="rounded-full mr-2 ring-2 h-10 w-10 ring-black"
                 width={30}
                 height={30}
               />
