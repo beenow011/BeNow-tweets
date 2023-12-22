@@ -23,7 +23,7 @@ export const UserProfile = () => {
       <div className="md:flex text-white ">
         {/* {console.log(user)} */}
         <img
-          src={tweetUser && service.getFiles(tweetUser.profilpic)}
+          src={service.getFiles(tweetUser.prefs.fileId)}
           alt=""
           className="rounded-full ring-2 ring-white m-4 h-36  md:h-96"
           height={500}

@@ -3,6 +3,7 @@ import { CardTemplate } from "../CardTemplate";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import service from "../../appwite/config";
+import Banner from "../Banner";
 export const Home = () => {
   const userStatus = useSelector((state) => state.auth.status);
   const userData = useSelector((state) => state.auth.userData);
@@ -16,6 +17,9 @@ export const Home = () => {
   const newArray = tweets.slice().reverse();
   return userStatus ? (
     <div className="z-2 relative">
+      <div>
+        <Banner />
+      </div>
       <h1 className="text-3xl font-bold text-start p-5 text-white">
         Top tweets
       </h1>
