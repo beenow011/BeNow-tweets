@@ -21,17 +21,23 @@ export const Home = () => {
       </h1>
 
       <div className="md:grid sm:max-md:grid-cols-2 md:grid-cols-3 md:gap-2">
-        {newArray.map((tweetInfo, i) => (
-          <CardTemplate
-            key={i}
-            id={tweetInfo.$id}
-            userId={tweetInfo.userid}
-            tweet={tweetInfo.msg}
-            img={tweetInfo.profilpic}
-            likeCountPrev={Math.floor(Math.random() * 20)}
-          />
-        ))}
-        {/* {console.log(newArray[5].likecount)} */}
+        {newArray.map(
+          (tweetInfo, i) =>
+            tweetInfo && (
+              <CardTemplate
+                key={i}
+                id={tweetInfo.$id}
+                userId={tweetInfo.userid}
+                tweet={tweetInfo.msg}
+                img={tweetInfo.profilpic}
+                likeCountPrev={
+                  tweetInfo.likecount !== undefined ? tweetInfo.likecount : 0
+                }
+              />
+            )
+        )}
+        {console.log(newArray)}
+        {console.log("in home", newArray[0].likecount)}
       </div>
     </div>
   ) : (

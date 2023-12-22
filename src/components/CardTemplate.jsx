@@ -25,10 +25,16 @@ export const CardTemplate = ({
 
   const [isLike, setIsLike] = useState(false);
   // console.log(id);
-  // console.log(typeof likeCountPrev);
+  console.log(likeCountPrev);
 
   // useEffect(() => {
-  //   service.updateLike(id, { likeCount }).then((update) => console.log(update));
+  //   console.group("id:", id);
+  //   console.group("likeCountPrev:", likeCountPrev);
+
+  //   if (id && likeCountPrev)
+  //     service
+  //       .updateLike(id, { likecount: likeCount })
+  //       .then((update) => console.log(update));
   // }, [likeCount]);
 
   const handelLike = async (e) => {
@@ -36,10 +42,18 @@ export const CardTemplate = ({
       e.target.src = liked;
       setLikeCount((prev) => prev + 1);
       setIsLike(true);
+      if (id && likeCountPrev)
+        service
+          .updateLike(id, { likecount: likeCount })
+          .then((update) => console.log(update));
     } else {
       e.target.src = like;
       setLikeCount((prev) => prev - 1);
       setIsLike(false);
+      if (id && likeCountPrev)
+        service
+          .updateLike(id, { likecount: likeCount })
+          .then((update) => console.log(update));
     }
   };
 
@@ -59,7 +73,7 @@ export const CardTemplate = ({
           <Link to={`userprofile/${id}`}>
             <Typography variant="h5" color="blue-gray" className="mb-2 flex">
               <img
-                src={service.getFiles(img)}
+                src={img && service.getFiles(img)}
                 className="rounded-full mr-2 ring-2 ring-black"
                 width={30}
                 height={30}

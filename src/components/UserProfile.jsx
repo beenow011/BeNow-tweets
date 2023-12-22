@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Profile } from "./Pages/Profile";
 import service from "../appwite/config";
 import { tweets } from "./tweetInfo";
+import authService from "../appwite/auth";
 export const UserProfile = () => {
   const userData = useSelector((state) => state.auth.userData);
   const { id } = useParams();
@@ -11,18 +12,9 @@ export const UserProfile = () => {
   const [tweetUser, setTweetUser] = useState(null);
 
   useEffect(() => {
-    service.getPosts().then((tweets) => {
-      if (tweets) setUser(tweets.documents);
-    });
-    if (user) {
-      const tu = user.find((tweet) => tweet.$id === id);
-      if (tu) {
-        setTweetUser(tu);
-        console.log("twet", tweetUser);
-      }
-    }
+    authService.findUser(id).then((user) => user && setTweetUser(user));
   }, []);
-  const tweetSelector = useSelector((state) => state.allTweets);
+  const tweetSelector = useSelector((state) => state.tweets.allTweets);
 
   const img = "https://picsum.photos/id/123/40/40";
 

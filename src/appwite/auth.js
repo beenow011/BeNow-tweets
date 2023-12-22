@@ -1,16 +1,18 @@
 import conf from '../conf/conf.js';
-import { Client, Account, ID } from "appwrite";
-
+import { Client, Account, ID  } from "appwrite";
+import * as appwrite from 'node-appwrite';
 
 export class AuthService{
     client = new Client();
     account;
+    users;
 
     constructor() {
         this.client
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
+        this.users = new appwrite.Users(this.client);
             
     }
     async createAccount({email, password, name}) {
@@ -55,6 +57,13 @@ export class AuthService{
         return null;
     }
 
+    async findUser(userid){
+        try{
+            return await this.users.get(userid);
+        }catch(error){
+            console.log("Appwrite serive :: findUser :: error", error);
+        }
+    }
     
      async logout() {
 

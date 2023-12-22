@@ -19,6 +19,8 @@ export default function LoginCard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
+  const [visibility, setVisibility] = useState(true);
+
   const { register, handleSubmit } = useForm();
   const login = async (data) => {
     setError("");
@@ -52,6 +54,7 @@ export default function LoginCard() {
         <Input
           label="Email"
           size="lg"
+          color="black"
           className="text-black"
           {...register("email", {
             required: true,
@@ -62,15 +65,25 @@ export default function LoginCard() {
             },
           })}
         />
-        <Input
-          label="Password"
-          type="password"
-          size="lg"
-          className="text-black"
-          {...register("password", {
-            required: true,
-          })}
-        />
+
+        <div>
+          <Input
+            label="Password"
+            type={visibility ? "password" : "text"}
+            size="lg"
+            color="black"
+            className="text-black"
+            {...register("password", {
+              required: true,
+            })}
+          />
+          <span
+            className="material-symbols-outlined absolute right-[32px] top-[198px] cursor-default"
+            onClick={() => setVisibility((state) => !state)}
+          >
+            {visibility ? "visibility_off" : "visibility"}
+          </span>
+        </div>
       </CardBody>
       <CardFooter className="pt-0" as="div">
         {error && (

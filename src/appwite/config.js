@@ -56,7 +56,7 @@ export class Service{
         }
     }
 
-    async updateLike(post,{likeCount}){
+    async updateLike(post,{likecount}){
         try{
 
             // if (!post && !likeCount) {
@@ -64,11 +64,11 @@ export class Service{
             //   }
           
               const documentId = post;
-            const updatedData = {
-                likecount: likeCount 
-              };
+           console.log("post:",post)
+           console.log("likecount:",likecount)
+
             //   console.log(updatedData)
-            return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,documentId,updatedData)
+            return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,documentId,{likecount})
         }catch(error){
             console.log("appwrite error::update like::", error)
         }

@@ -92,7 +92,7 @@ export const Profile = () => {
                 className="cursor-pointer "
               >
                 {" "}
-                <span class="material-symbols-outlined">edit</span>
+                <span className="material-symbols-outlined">edit</span>
               </div>
             ) : (
               <div>
