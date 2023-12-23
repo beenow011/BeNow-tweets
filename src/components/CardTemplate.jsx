@@ -27,15 +27,14 @@ export const CardTemplate = ({
   // console.log(id);
   console.log(likeCountPrev);
 
-  // useEffect(() => {
-  //   console.group("id:", id);
-  //   console.group("likeCountPrev:", likeCountPrev);
-
-  //   if (id && likeCountPrev)
-  //     service
-  //       .updateLike(id, { likecount: likeCount })
-  //       .then((update) => console.log(update));
-  // }, [likeCount]);
+  useEffect(() => {
+    if (id && likeCount) {
+      service
+        .updateLike(id, { likecount: likeCount })
+        .then((update) => console.log(update))
+        .catch((error) => console.error("Error updating like:", error));
+    }
+  }, [likeCount]);
 
   const handelLike = async (e) => {
     if (!isLike) {

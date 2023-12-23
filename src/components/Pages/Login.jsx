@@ -14,6 +14,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "../../store/authSlice";
 import authService from "../../appwite/auth";
+import logo from "../../assets/logo2.png";
 
 export default function LoginCard() {
   const navigate = useNavigate();
@@ -50,6 +51,8 @@ export default function LoginCard() {
           Log in
         </Typography>
       </CardHeader>
+      <img src={logo} alt="logo" width={100} className="m-auto" />
+
       <CardBody className="flex flex-col gap-4 ">
         <Input
           label="Email"
@@ -78,7 +81,7 @@ export default function LoginCard() {
             })}
           />
           <span
-            className="material-symbols-outlined absolute right-[32px] top-[198px] cursor-default"
+            className="material-symbols-outlined absolute right-[32px] top-[298px] cursor-default"
             onClick={() => setVisibility((state) => !state)}
           >
             {visibility ? "visibility_off" : "visibility"}

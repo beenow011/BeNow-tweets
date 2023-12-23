@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import LogoutBtn from "./LogoutBtn";
 import github from "../../assets/github.png";
+import logo from "../../assets/logo2.png";
+
 export const SideBar = () => {
   // const userData = useSelector((state) => state.auth.userData);
   const authStatus = useSelector((state) => state.auth.status);
@@ -46,16 +48,17 @@ export const SideBar = () => {
         {" "}
         <div className="flex-none my-auto ml-2 md:pl-4 ">
           <Link to="/">
-            <h1 className="flex sm:text-lg  md:text-3xl   ">
+            {/* <h1 className="flex sm:text-lg  md:text-3xl   ">
               <p className="bg-[#ec5990] rounded-md text-black px-1 ">Be</p>
               <p className="m-auto">-</p>
               <p className="text-black rounded-lg  bg-white flex px-1">
                 N<span className="italic">ow</span>
               </p>
-            </h1>
+            </h1> */}
+            <img src={logo} alt="logo" width={100} />
           </Link>
         </div>
-        <div className="bg-gray-800 p-2 rounded-xl z-20 menu-container gap-5 absolute right-5 top-5 hover:bg-blue-gray-800/50">
+        <div className="bg-black p-2 rounded-xl z-20 menu-container gap-5 absolute right-5 top-5 ">
           <div
             className="text-white cursor-pointer "
             onClick={() => setMenu((val) => !val)}

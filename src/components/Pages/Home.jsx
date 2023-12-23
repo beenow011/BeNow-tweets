@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import service from "../../appwite/config";
 import Banner from "../Banner";
+import logo from "../../assets/logo2.png";
 export const Home = () => {
   const userStatus = useSelector((state) => state.auth.status);
   const userData = useSelector((state) => state.auth.userData);
@@ -46,7 +47,8 @@ export const Home = () => {
     </div>
   ) : (
     <>
-      <p className="text-white mt-10 text-2xl ">login or signup</p>
+      <img src={logo} className="m-auto" width={300} />
+      <p className="text-white  text-2xl ">login or signup</p>
       <div className="h-[100vw] w-80 flex justify-center gap-6 mx-auto ">
         <Link to="/login">
           <h1 className="text-white text-2xl font-mono font-bold  m-6 w-fit mx-auto bg-pink-400 rounded-lg hover:bg-white hover:text-pink-300 p-3">

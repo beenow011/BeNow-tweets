@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo2.png";
+
 export default function Footer() {
   return (
     <footer className="bg-black text-white border-y mt-10 rounded-md ">
@@ -7,12 +9,7 @@ export default function Footer() {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link to="/" className="flex items-center">
-              <h1 className="flex sm:text-lg  md:text-3xl  border-gray-400 border-solid border-2">
-                <p className="bg-[#ec5990] text-black px-1 ">Be</p>
-                <p className="text-black   bg-white flex px-1">
-                  N<span className="italic">ow</span>
-                </p>
-              </h1>
+              <img src={logo} alt="logo" width={100} />
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6">
@@ -67,12 +64,7 @@ export default function Footer() {
           </span>
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
             <Link to="/" className="flex items-center">
-              <h1 className="flex text-lg  border-gray-400 border-solid border-2">
-                <p className="bg-[#ec5990] text-black px-1 ">Be</p>
-                <p className="text-black   bg-white flex px-1">
-                  N<span className="italic">ow</span>
-                </p>
-              </h1>
+              <img src={logo} alt="logo" width={50} />
             </Link>
           </div>
         </div>

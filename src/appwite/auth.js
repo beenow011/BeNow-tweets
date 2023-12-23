@@ -60,7 +60,8 @@ export class AuthService{
     async findUser(userid){
         try{
             console.log(userid)
-            return await this.users.get(userid);
+            const response = await this.users.get(userid);
+    return response; 
         }catch(error){
             console.log("Appwrite serive :: findUser :: error", error);
         }

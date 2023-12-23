@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import LogoutBtn from "./LogoutBtn";
-
+import logo from "../../assets/logo2.png";
 export const Header = () => {
   // const userData = useSelector((state) => state.auth.userData);
   const authStatus = useSelector((state) => state.auth.status);
@@ -41,16 +41,17 @@ export const Header = () => {
   ];
   return (
     <header className=" sticky z-50 top-0 shadow-lg shadow-gray-900/80 hidden md:block">
-      <nav className=" bg-black lg:px-10 py-2.5 text-white flex   justify-evenly rounded-md sm:flex-col md:flex-row">
+      <nav className=" bg-gradient-to-r from-[#000000] via-[#631a34] to-[#903556] lg:px-10 py-2.5 text-white flex   justify-evenly rounded-md sm:flex-col md:flex-row">
         <div className="flex-none my-auto ml-2 md:pl-4">
           <Link to="/">
-            <h1 className="flex sm:text-lg  md:text-3xl   ">
+            {/* <h1 className="flex sm:text-lg  md:text-3xl   ">
               <p className="bg-[#ec5990] rounded-md text-black px-1 ">Be</p>
               <p className="m-auto">-</p>
               <p className="text-black rounded-lg  bg-white flex px-1">
                 N<span className="italic">ow</span>
               </p>
-            </h1>
+            </h1> */}
+            <img src={logo} alt="logo" width={100} />
           </Link>
         </div>
 

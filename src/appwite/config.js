@@ -64,8 +64,7 @@ export class Service{
             //   }
           
               const documentId = post;
-           console.log("post:",post)
-           console.log("likecount:",likecount)
+          
 
             //   console.log(updatedData)
             return await this.databases.updateDocument(conf.appwriteDatabaseId,conf.appwriteCollectionId,documentId,{likecount})
