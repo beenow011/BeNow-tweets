@@ -50,7 +50,7 @@ export const Home = () => {
     </div>
   ) : (
     <>
-      <div className=" bg-gradient-to-r w-96 m-auto my-5 from-[#ff005d] via-[#db3874] to-[#ec5990] rounded-md ">
+      <div className=" bg-gradient-to-r w-80 md:w-96 mx-auto  my-5 from-[#ff005d] via-[#db3874] to-[#ec5990] rounded-md ">
         <img src={logo} className="m-auto hover:animate-pulse " width={300} />
         <p className="text-white  text-2xl ">login or signup</p>
         <div className="flex justify-center gap-6 mx-auto  ">
