@@ -19,6 +19,7 @@ export const Tweets = () => {
         ? `@${userData.name.toLowerCase().replace(/\s/g, "")}`
         : "",
       profilpic: userStatus ? userData.prefs.fileId : null,
+      bio: userStatus ? userData.prefs.bio : null,
     },
   });
   const [Tweet, setTweet] = useState("");

@@ -12,26 +12,16 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { UserProfile } from "./UserProfile";
-export const CardTemplate = ({
-  key,
-  id,
-  userId,
-  tweet,
-  likeCountPrev,
-  img,
-}) => {
+export const CardTemplate = ({ id, userId, tweet, likeCountPrev, img }) => {
   const [users, setUsers] = useState({});
   const [likeCount, setLikeCount] = useState(likeCountPrev);
-
   const [isLike, setIsLike] = useState(false);
-  // console.log(id);
-  console.log(likeCountPrev);
 
   useEffect(() => {
     if (id && likeCount) {
       service
         .updateLike(id, { likecount: likeCount })
-        .then((update) => console.log(update))
+
         .catch((error) => console.error("Error updating like:", error));
     }
   }, [likeCount]);
@@ -41,18 +31,12 @@ export const CardTemplate = ({
       e.target.src = liked;
       setLikeCount((prev) => prev + 1);
       setIsLike(true);
-      if (id && likeCountPrev)
-        service
-          .updateLike(id, { likecount: likeCount })
-          .then((update) => console.log(update));
+      // if (id && likeCountPrev) service.updateLike(id, { likecount: likeCount });
     } else {
       e.target.src = like;
       setLikeCount((prev) => prev - 1);
       setIsLike(false);
-      if (id && likeCountPrev)
-        service
-          .updateLike(id, { likecount: likeCount })
-          .then((update) => console.log(update));
+      // if (id && likeCountPrev) service.updateLike(id, { likecount: likeCount });
     }
   };
 

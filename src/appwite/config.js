@@ -14,7 +14,7 @@ export class Service{
         
     }
 
-    async  createPost({msg,id,userid,profilpic}) {
+    async  createPost({msg,id,userid,profilpic,bio}) {
         try{
             console.log("in profile pic:",profilpic)
             console.log("in arguemnet:",arguments[0])
@@ -23,7 +23,7 @@ export class Service{
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 ID.unique(),{
-                    msg,id,userid,profilpic
+                    msg,id,userid,profilpic,bio
                 })
         }catch(error){
             console.log("appwrite error::create post::", error)

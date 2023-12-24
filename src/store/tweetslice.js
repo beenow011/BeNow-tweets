@@ -1,15 +1,20 @@
 import {createSlice ,nanoid} from '@reduxjs/toolkit';
-import {  tweets } from '../components/tweetInfo';
 import dp from "../assets/dp.jpg";
+import service from '../appwite/config';
+
+
 
 const initialState = {
-    allTweets: [...tweets]
+    allTweets: []
 }
 
 export const tweetSlice = createSlice({
     name:"tweets",
     initialState,
     reducers:{
+        setTweets: (state, action) => {
+            state.allTweets = action.payload; 
+        },
         addTweet:(state,action)=>{
             const tweet = {
                 id:nanoid(),
@@ -28,5 +33,14 @@ export const tweetSlice = createSlice({
 
 })
 
-export const {addTweet,dltTweet} = tweetSlice.actions;
+export const fetchTweets = () => async (dispatch) => {
+    try {
+        const tweets = await service.getPosts();
+        dispatch(setTweets(tweets.documents)); // Dispatch setTweets action with fetched tweets
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const {setTweets,addTweet,dltTweet} = tweetSlice.actions;
 export default tweetSlice.reducer;

@@ -18,7 +18,7 @@ export const Profile = () => {
   const [bio, setBio] = useState(userData.prefs.bio);
   const [edit, setEdit] = useState(false);
   const tweetSelector = useSelector((state) => state.tweets.allTweets);
-  const [tweets, setTweets] = useState([]);
+  const [tweets, setTweets] = useState(tweetSelector);
   const fileId = userData.prefs.fileId;
   // let myTweets = [];
   const handleSubmit = async () => {
@@ -34,16 +34,22 @@ export const Profile = () => {
     });
   }, [bio, fileId]);
 
+  // useEffect(() => {
+  //   service.getPosts().then((posts) => {
+  //     if (posts) {
+  //       const newTweets = posts.documents.filter(
+  //         (tweet) => tweet.id === userData.$id
+  //       );
+  //       setTweets(newTweets);
+  //     }
+  //   });
+  // }, []);
+
   useEffect(() => {
-    service.getPosts().then((posts) => {
-      if (posts) {
-        const newTweets = posts.documents.filter(
-          (tweet) => tweet.id === userData.$id
-        );
-        setTweets(newTweets);
-      }
-    });
+    const newTweets = tweets.filter((tweet) => tweet.id === userData.$id);
+    if (newTweets) setTweets(newTweets);
   }, []);
+
   // console.log(userData);
   // console.log(tweets);
   const newArray = tweets.slice().reverse();
@@ -62,7 +68,7 @@ export const Profile = () => {
         alt=""
         width={380}
         height={390}
-        className="rounded-md ring-2 ring-white m-4 w-36 h-36  md:h-96 md:w-96"
+        className="rounded-full ring-2 ring-white m-4h-36 w-36 md:h-96 md:w-96"
       />
       <div className="p-4 flex flex-col m-auto w-full">
         <ul className="flex flex-col items-start">
@@ -117,7 +123,7 @@ export const Profile = () => {
                 key={i}
                 userId={tweetInfo.userid}
                 tweet={tweetInfo.msg}
-                likeCountPrev={Math.floor(Math.random() * 20)}
+                likeCountPrev={tweetInfo.likecount}
                 img={tweetInfo.img}
               />
             ))

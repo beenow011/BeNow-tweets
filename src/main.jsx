@@ -7,6 +7,7 @@ import { Home } from "./components/Pages/Home.jsx";
 import { Tweets } from "./components/Pages/Tweets.jsx";
 import { Profile } from "./components/Pages/Profile.jsx";
 import { UserProfile } from "./components/UserProfile.jsx";
+
 import Signup from "./components/Pages/Signup.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
 import Login from "./components/Pages/Login.jsx";

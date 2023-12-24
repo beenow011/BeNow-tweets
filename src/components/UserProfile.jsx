@@ -44,7 +44,7 @@ export const UserProfile = () => {
       <img
         src={user && service.getFiles(user.profilpic)}
         alt=""
-        className="rounded-md ring-2 ring-white m-4 h-36  md:h-96 mx-auto"
+        className="rounded-full ring-2 ring-white m-4 h-36 w-36 md:h-96 md:w-96 mx-auto"
       />
       <div className="p-4 flex flex-col m-auto ">
         <ul className="flex flex-col items-start">
@@ -54,7 +54,7 @@ export const UserProfile = () => {
               {/* {tweetUser && tweetUser.userid} */}
             </h1>
           </li>
-
+          <li>{user && user.bio}</li>
           <li className="mb-4">
             {user ? (
               <CardTemplate

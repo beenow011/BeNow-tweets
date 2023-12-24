@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux'; 
+import { combineReducers } from 'redux';
+// import thunk from 'redux-thunk';
 import tweetReducer from './tweetslice';
 import authReducer from './authSlice'; 
 
@@ -9,5 +10,6 @@ const rootReducer = combineReducers({
 });
 
 export const store = configureStore({
-  reducer: rootReducer, 
+  reducer: rootReducer,
+  // middleware: [thunk],
 });
