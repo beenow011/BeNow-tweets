@@ -13,9 +13,9 @@ Hello everyone, welcome to "BeNow", this is a twitting website, where you can sh
 
 ## Tech-stack
 
--"React.js" for front-end component development.
--"Redux toolkit" for storing and providing the user authentication status and all the tweets.
--"Tailwind CSS" for designing.
--"Appwrite" for authentication, databases, storage and other backend services.
--"React-hook-form" for handling login and signup data properly.
--"Material UI" for some ready made components.
+- "React.js" for front-end component development.
+- "Redux toolkit" for storing and providing the user authentication status and all the tweets.
+- "Tailwind CSS" for designing.
+- "Appwrite" for authentication, databases, storage and other backend services.
+- "React-hook-form" for handling login and signup data properly.
+- "Material UI" for some ready made components.
