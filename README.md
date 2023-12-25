@@ -20,7 +20,8 @@ Hello everyone, welcome to _BeNow_, this is a twitting website, where you can sh
 - _React-hook-form_ for handling login and signup data properly.
 - _Material UI_ for some ready made components.
 
-**Accessing environment var:**<br>
+##Accessing environment var:
+<br>
 #in create-react-app:
 <br>
 These environment variables will be defined for you on process.env. For example, having an environment variable named <br><br>REACT_APP_NOT_SECRET_CODE<br><br> will be exposed in your JS as<br><br> process.env.REACT_APP_NOT_SECRET_CODE.<br><br>
