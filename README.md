@@ -20,16 +20,17 @@ Hello everyone, welcome to _BeNow_, this is a twitting website, where you can sh
 - _React-hook-form_ for handling login and signup data properly.
 - _Material UI_ for some ready made components.
 
-##Accessing environment var:
-<br>
-#in create-react-app:
-<br>
+## Accessing environment var:
+
+# in create react app :
+
 These environment variables will be defined for you on process.env. For example, having an environment variable named <br><br>REACT_APP_NOT_SECRET_CODE<br><br> will be exposed in your JS as<br><br> process.env.REACT_APP_NOT_SECRET_CODE.<br><br>
 <br>
 https://create-react-app.dev/docs/adding-custom-environment-variables/
 <br><br>
 
-#in vite:
+# in vite:
+
 <br>
 To prevent accidentally leaking env variables to the client, only variables prefixed with **VITE\_** are exposed to your Vite-processed code. e.g. for the following env variables:
 
@@ -64,7 +65,7 @@ https://vitejs.dev/guide/env-and-mode
     export default conf
    ```
 
-**Setting up auth for appwrite **
+** Setting up auth for appwrite **
 
 create a appwrite folder inside src and create auth.js<br>
 import conf and user info:
@@ -91,65 +92,79 @@ const authService = new AuthService();
 export default authService
 ```
 
-**1) sign up:** <br>https://appwrite.io/docs/products/auth/email-password <br>
+** 1) sign up: ** <br>https://appwrite.io/docs/products/auth/email-password <br>
 
 ```
- async createAccount ({email,password,name}){
-     try{
-        const userAccount = await this.account.create(ID.unique(),email,password,name);
-        if(userAccount){
-         this.login(email,password);
-        }else{
-         return userAccount;
-        }
-     }catch(error){
-         throw error;
-     }
- }
-```
-
-** 2)Login:**
-
-```
-async login({email,password}){
-      try{
-        return await this.account.createEmailSession(email,password);
-      }catch(error){
-          throw error;
-      }
-      // return null;
-
-  }
-```
-
-**3)to get current user:**
-
-```
- async getCurrentUser(){
-        try{
-            return await this.account.get();
-        }catch(error){
+ async createAccount({email, password, name}) {
+        try {
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
+            if (userAccount) {
+                // call another method
+                return this.login({email, password});
+            } else {
+               return  userAccount;
+            }
+        } catch (error) {
             throw error;
         }
-        // return null;
     }
 ```
 
-**4)logout:**
+** 2)Login: **
 
 ```
-async logout(){
-        try{
-           return await this.account.deleteSessions();
-        }catch(error){
+ async login({email, password}) {
+        try {
+            return await this.account.createEmailSession(email, password);
+        } catch (error) {
             throw error;
         }
-        // return null;
+    }
+```
+
+** 3)to get current user: **
+
+```
+ async getCurrentUser() {
+        try {
+            return  await this.account.get();
+        } catch (error) {
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
+        }
+
+        return null;
+    }
+```
+
+** 4)logout: **
+
+```
+async logout() {
+
+        try {
+            await this.account.deleteSessions();
+        } catch (error) {
+            console.log("Appwrite serive :: logout :: error", error);
+        }
+    }
+```
+
+** 5) Update user: **
+adding bio and profile pic's file id to the user prefs.
+
+```
+     async updateUser({fileId,bio}){
+        try{
+            return await this.account.updatePrefs({fileId,bio});
+        }catch(error){
+            console.log("Appwrite serive :: updateUser :: error", error);
+
+        }
     }
 ```
 
 <br><br><br><br>
-**setup the service configuration**
+** setup the service configuration **
 <br><br>
 make another file inside appwrite named config.js<br>
 
