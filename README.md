@@ -9,13 +9,13 @@ Currently, two official plugins are available:
 
 # BeNow-Tweets
 
-Hello everyone, welcome to "BeNow", this is a twitting website, where you can share your thoughts.
+Hello everyone, welcome to _BeNow_, this is a twitting website, where you can share your thoughts.
 
 ## Tech-stack
 
-- "React.js" for front-end component development.
-- "Redux toolkit" for storing and providing the user authentication status and all the tweets.
-- "Tailwind CSS" for designing.
-- "Appwrite" for authentication, databases, storage and other backend services.
-- "React-hook-form" for handling login and signup data properly.
-- "Material UI" for some ready made components.
+- _React.js_ for front-end component development.
+- _Redux toolkit_ for storing and providing the user authentication status and all the tweets.
+- _Tailwind CSS_ for designing.
+- _Appwrite_ for authentication, databases, storage and other backend services.
+- _React-hook-form_ for handling login and signup data properly.
+- _Material UI_ for some ready made components.
