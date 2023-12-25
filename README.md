@@ -37,13 +37,17 @@ To prevent accidentally leaking env variables to the client, only variables pref
 VITE_SOME_KEY=123<br>
 DB_PASSWORD=foobar<br><br>
 Only VITE_SOME_KEY will be exposed as<br>
-<br>import.meta.env.VITE_SOME_KEY <br><br> to your client source code, but DB_PASSWORD will not.
+
+```
+import.meta.env.VITE_SOME_KEY
+```
+
+<br><br> to your client source code, but DB_PASSWORD will not.
 <br>
 https://vitejs.dev/guide/env-and-mode
 <br>
-<br>
-** setting up appwrite **
-<br>
+
+** setting up appwrite: **
 
 1. create new project <br>
 2. create new database <br>
@@ -65,7 +69,7 @@ https://vitejs.dev/guide/env-and-mode
     export default conf
    ```
 
-** Setting up auth for appwrite **
+** Setting up auth for appwrite: **
 
 create a appwrite folder inside src and create auth.js<br>
 import conf and user info:
