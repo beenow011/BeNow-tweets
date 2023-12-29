@@ -11,7 +11,7 @@ import { SideBar } from "./components/Header/SideBar";
 function App() {
   return (
     <Provider store={store}>
-      <div className="bg-[url('./src/assets/bg.jpg')] shadow-md  shadow-black md:ring-2 rounded-md md:ring-white/10">
+      <div className="bg-[url('./assets/bg.jpg')] shadow-md  shadow-black md:ring-2 rounded-md md:ring-white/10">
         <Header />
         <SideBar />
         <Outlet />
