@@ -49,7 +49,7 @@ export const MyTweet = ({ userId, tweet, likeCountPrev, img, id }) => {
     if (e.target.value === "dlt") {
       service.deletePost(id);
       dispatch(dltTweet(id));
-      
+
       navigate("/");
     }
   };

@@ -70,7 +70,7 @@ export const Profile = () => {
         alt=""
         width={380}
         height={390}
-        className="rounded-full ring-2 ring-white m-4h-36 w-36 md:h-96 md:w-96"
+        className="rounded-full ring-2 ring-white m-4 h-36 w-36 md:h-96 md:w-96 "
       />
       <div className="p-4 flex flex-col m-auto w-full">
         <ul className="flex flex-col items-start">
