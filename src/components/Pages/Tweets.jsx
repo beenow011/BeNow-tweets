@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { addTweet } from "../../store/tweetslice";
 import service from "../../appwite/config";
 import { useForm } from "react-hook-form";
+import { toast, Toaster } from "react-hot-toast";
 export const Tweets = () => {
   const userStatus = useSelector((state) => state.auth.status);
 
@@ -38,6 +39,7 @@ export const Tweets = () => {
     if (data.msg.length > 0) {
       console.log(data);
       const dbPost = await service.createPost({ ...data });
+      toast.success("Tweeted..!");
       setTweet("");
     } else {
       alert("tweet must be min of 1 char.");
@@ -45,6 +47,9 @@ export const Tweets = () => {
   };
   return userStatus ? (
     <div className="p-5">
+      <div>
+        <Toaster />
+      </div>
       <form action="" onSubmit={handleSubmit(Submit)}>
         <h1 className="text-3xl text-gray-700 font-bold text-left ">
           What's on your mind...!?

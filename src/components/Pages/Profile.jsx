@@ -7,6 +7,8 @@ import authService from "../../appwite/auth";
 import { login } from "../../store/authSlice";
 import dp from "../../assets/dp.jpg";
 import service from "../../appwite/config";
+import { toast, Toaster } from "react-hot-toast";
+
 export const Profile = () => {
   const dispatch = useDispatch();
   const userStatus = useSelector((state) => state.auth.status);

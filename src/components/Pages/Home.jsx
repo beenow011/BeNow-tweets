@@ -9,6 +9,7 @@ import { fetchTweets } from "../../store/tweetslice";
 
 import { setTweets } from "../../store/tweetslice";
 import { MyTweet } from "../MyTweet";
+import { Toaster } from "react-hot-toast";
 export const Home = () => {
   const dispatch = useDispatch();
   const userStatus = useSelector((state) => state.auth.status);

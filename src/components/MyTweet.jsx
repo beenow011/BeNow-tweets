@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import service from "../appwite/config";
+import { toast, Toaster } from "react-hot-toast";
+
 import {
   Card,
   CardBody,
@@ -47,6 +49,7 @@ export const MyTweet = ({ userId, tweet, likeCountPrev, img, id }) => {
     if (e.target.value === "dlt") {
       service.deletePost(id);
       dispatch(dltTweet(id));
+      
       navigate("/");
     }
   };
