@@ -23,7 +23,7 @@ export const Home = () => {
 
   const newArray = allTweets ? allTweets.slice().reverse() : [];
   return userStatus ? (
-    <div className="z-2 relative">
+    <div className="z-2 relative]">
       <div>
         <Banner />
       </div>
